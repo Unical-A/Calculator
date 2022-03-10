@@ -1,4 +1,4 @@
-import {BUTTON_NUMBER, BUTTON_TOTAL} from "../actions";
+import {BUTTON_NUMBER, BUTTON_TOTAL, CLEAR_NUMBER} from "../actions";
 
 export const CALCULATOR_KEY=""
 let initialState={
@@ -22,6 +22,10 @@ export const reducerCalculator=(state=initialState, action)=>{
                 return {...state, total:"Error"}
 
             }
+        case CLEAR_NUMBER:
+
+            return{...state, calculator: '', total: ''}
+
         default:
             return state
     }

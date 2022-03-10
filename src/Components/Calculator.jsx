@@ -1,7 +1,7 @@
 import React from 'react';
 import {Styled} from "./Calculator.styled";
 import {useDispatch, useSelector} from "react-redux";
-import {buttonNumber,buttonTotal} from "../store/actions";
+import {buttonNumber,buttonTotal, clearNumber} from "../store/actions";
 import {CALCULATOR_KEY} from "../store/reducer";
 
 
@@ -30,8 +30,10 @@ const dispatch=useDispatch()
         {/*    defaultValue={(viewCalculator.total).length===0?*/}
         {/*        viewCalculator.calculator:viewCalculator.total}/>*/}
         {/*</div>*/}
+            <Styled.Total>
             <h1>{(viewCalculator.total).length===0?
                 viewCalculator.calculator:viewCalculator.total}</h1>
+            </Styled.Total>
             <Styled.Root>
 
                 <button onClick={()=>dispatch(buttonNumber(0))}>0</button>
@@ -46,6 +48,9 @@ const dispatch=useDispatch()
                 <button onClick={()=>dispatch(buttonNumber(9))}>9</button>
                 <button onClick={()=>dispatch(buttonNumber("+"))}>+</button>
                 <button onClick={()=>dispatch(buttonNumber("-"))}>-</button>
+                <button onClick={()=>dispatch(buttonNumber("*"))}>*</button>
+                <button onClick={()=>dispatch(buttonNumber("/"))}>/</button>
+                <button onClick={()=>dispatch(clearNumber())}>AC</button>
                 <button onClick={()=>dispatch(buttonTotal("="))}>=</button>
 
 
