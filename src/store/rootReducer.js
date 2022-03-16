@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
-import {CALCULATOR_KEY, reducerCalculator} from "./reducer";
+import {reducerCalculator} from "./reducer";
 
 let rootReducer=combineReducers({
-    [CALCULATOR_KEY]:reducerCalculator
+    reducerCalculator
 })
 
 export {rootReducer}

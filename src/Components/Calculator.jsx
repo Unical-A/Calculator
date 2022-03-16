@@ -1,61 +1,53 @@
 import React from 'react';
 import {Styled} from "./Calculator.styled";
 import {useDispatch, useSelector} from "react-redux";
-import {buttonNumber,buttonTotal, clearNumber} from "../store/actions";
-import {CALCULATOR_KEY} from "../store/reducer";
-
+import {buttonNumber,buttonTotal, clearNumber, buttonSign} from "../store/actions";
+import {reducerCalculator} from "../store/reducer";
 
 
 const Calculator = () => {
+
 const dispatch=useDispatch()
-
-    // const handleTotal=(e)=>{
-    //
-    // e.preventDefault()
-    //     dispatch(buttonTotal())
-    // }
-    const viewCalculator=useSelector((state)=> {
-        return state[CALCULATOR_KEY]
-    })
+const state=useSelector((state)=> state)
+const {lineOne, lineTwo}=state.reducerCalculator
 
 
 
+// const arr=[]
 
+const funcButton=(payload)=>{
+    if(payload==='='){
+        dispatch(buttonTotal(payload))
+    }else {
+        dispatch(buttonNumber(payload))
+    }
+
+}
 
     return (
         <div>
-        {/*    <div>*/}
-        {/*    <input type="text"*/}
-        {/*           placeholder='0'*/}
-        {/*    defaultValue={(viewCalculator.total).length===0?*/}
-        {/*        viewCalculator.calculator:viewCalculator.total}/>*/}
-        {/*</div>*/}
             <Styled.Total>
-            <h1>{(viewCalculator.total).length===0?
-                viewCalculator.calculator:viewCalculator.total}</h1>
+            <p>{lineTwo}</p>
+                <p>{lineOne}</p>
             </Styled.Total>
             <Styled.Root>
 
-                <button onClick={()=>dispatch(buttonNumber(0))}>0</button>
-                <button onClick={()=>dispatch(buttonNumber(1))}>1</button>
-                <button onClick={()=>dispatch(buttonNumber(2))}>2</button>
-                <button onClick={()=>dispatch(buttonNumber(3))}>3</button>
-                <button onClick={()=>dispatch(buttonNumber(4))}>4</button>
-                <button onClick={()=>dispatch(buttonNumber(5))}>5</button>
-                <button onClick={()=>dispatch(buttonNumber(6))}>6</button>
-                <button onClick={()=>dispatch(buttonNumber(7))}>7</button>
-                <button onClick={()=>dispatch(buttonNumber(8))}>8</button>
-                <button onClick={()=>dispatch(buttonNumber(9))}>9</button>
-                <button onClick={()=>dispatch(buttonNumber("+"))}>+</button>
-                <button onClick={()=>dispatch(buttonNumber("-"))}>-</button>
-                <button onClick={()=>dispatch(buttonNumber("*"))}>*</button>
-                <button onClick={()=>dispatch(buttonNumber("/"))}>/</button>
-                <button onClick={()=>dispatch(clearNumber())}>AC</button>
-                <button onClick={()=>dispatch(buttonTotal("="))}>=</button>
-
-
-
-
+    <button value={0} onClick={(e)=>funcButton(e.target.value)}>0</button>
+    <button value={1} onClick={(e)=>funcButton(e.target.value)}>1</button>
+    <button value={2} onClick={(e)=>funcButton(e.target.value)}>2</button>
+    <button value={3} onClick={(e)=>funcButton(e.target.value)}>3</button>
+    <button value={4} onClick={(e)=>funcButton(e.target.value)}>4</button>
+    <button value={5} onClick={(e)=>funcButton(e.target.value)}>5</button>
+    <button value={6} onClick={(e)=>funcButton(e.target.value)}>6</button>
+    <button value={7} onClick={(e)=>funcButton(e.target.value)}>7</button>            <button onClick={()=>funcButton(4)}>4</button>
+    <button value={8} onClick={(e)=>funcButton(e.target.value)}>8</button>
+    <button value={9} onClick={(e)=>funcButton(e.target.value)}>9</button>
+    <button value={'+'} onClick={(e)=>funcButton(e.target.value)}>+</button>
+    <button value={'-'} onClick={(e)=>funcButton(e.target.value)}>-</button>
+    <button value={'/'} onClick={(e)=>funcButton(e.target.value)}>/</button>
+    <button value={'*'} onClick={(e)=>funcButton(e.target.value)}>*</button>
+    <button value={'='} onClick={(e)=>funcButton(e.target.value)}>=</button>
+    <button value={'.'} onClick={(e)=>funcButton(e.target.value)}>.</button>
 
 
             </Styled.Root>
