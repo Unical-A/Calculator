@@ -14,7 +14,7 @@ const {lineOne, lineTwo, isEquals}=state
     switch (action.type){
         case BUTTON_NUMBER:
             const inf=action.payload
-            if(inf!=='='&& inf!=='.' && inf!=='+' && inf!=='*' && inf!=='/') {
+            if(inf!=='='&& inf!=='.' && inf!=='+' && inf!=='*' && inf!=='/' && inf!=='-') {
                 return {...state, lineOne: action.payload}
             }if(inf==='+'|| inf==='/'|| inf==='*'|| inf==='-'){
             return {...state, lineOne: lineOne, lineTwo: lineOne+inf}
@@ -34,11 +34,29 @@ const {lineOne, lineTwo, isEquals}=state
 
 
             if(isEquals===false && b==='+'){
+
                 const res= (+a)+(+c)
                 const str=(lineTwo+(+c)+action.payload).substr(0,4)
                return{...state, lineOne: res,lineTwo: str, isEquals:true }
-
                 }
+            if(isEquals===false && b==='*'){
+
+                const res= (+a)*(+c)
+                const str=(lineTwo+(+c)+action.payload).substr(0,4)
+                return{...state, lineOne: res,lineTwo: str, isEquals:true }
+            }
+            if(isEquals===false && b==='/'){
+
+                const res= (+a)/(+c)
+                const str=(lineTwo+(+c)+action.payload).substr(0,4)
+                return{...state, lineOne: res,lineTwo: str, isEquals:true }
+            }
+            if(isEquals===false && b==='-'){
+
+                const res= (+a)-(+c)
+                const str=(lineTwo+(+c)+action.payload).substr(0,4)
+                return{...state, lineOne: res,lineTwo: str, isEquals:true }
+            }
             if(isEquals){
                 const res1=(res+(+c))
                 return{...state, lineTwo: res1+arr[1]+(+c-arr[0])+action.payload, lineOne: (+res1)+((+c)-(+arr[0]))}

@@ -49,7 +49,7 @@ const funcButton=(payload)=>{
     <Styled.But value={'+'} onClick={(e)=>funcButton(e.target.value)}>+</Styled.But>
     <Styled.But value={'-'} onClick={(e)=>funcButton(e.target.value)}>-</Styled.But>
     <Styled.But value={'/'} onClick={(e)=>funcButton(e.target.value)}>/</Styled.But>
-    <Styled.But value={'*'} onClick={(e)=>funcButton(e.target.value)}>*</Styled.But>
+    <Styled.But value={'*'} onClick={(e)=>funcButton(e.target.value)}>x</Styled.But>
     <Styled.But value={'='} onClick={(e)=>funcButton(e.target.value)}>=</Styled.But>
     <Styled.But value={'.'} onClick={(e)=>funcButton(e.target.value)}>.</Styled.But>
     <Styled.But value={'AC'} onClick={(e)=>funcButton(e.target.value)}>AC</Styled.But>
