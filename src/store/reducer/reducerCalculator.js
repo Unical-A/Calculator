@@ -70,6 +70,7 @@ const {lineOne, lineTwo, isEquals}=state
 
 
         case CLEAR_NUMBER:
+            console.log(action.payload)
 
             return{...state, lineOne:0, lineTwo: '', isEquals: false}
 
